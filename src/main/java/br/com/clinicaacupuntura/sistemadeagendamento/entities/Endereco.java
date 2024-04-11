@@ -2,11 +2,16 @@ package br.com.clinicaacupuntura.sistemadeagendamento.entities;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 
 @Entity
-@Table(name = "Endereços")
 public class Endereco {
+
+    @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long enderecoId;
 
     @Column(length = 120)
     private String rua;
@@ -23,7 +28,8 @@ public class Endereco {
     @Column(length = 9)
     private String cep;
 
-    public Endereco(String rua, int numero, String cidade, String estado, String cep) {
+    public Endereco(Long enderecoId, String rua, int numero, String cidade, String estado, String cep) {
+        this.enderecoId = enderecoId;
         this.rua = rua;
         this.numero = numero;
         this.cidade = cidade;

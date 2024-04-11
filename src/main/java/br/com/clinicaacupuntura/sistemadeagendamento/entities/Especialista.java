@@ -30,6 +30,38 @@ public class Especialista extends Pessoa {
         this.horariosDisponiveis = horariosDisponiveis;
     }
 
+    public String getEspecialidade() {
+        return especialidade;
+    }
+
+    public void setEspecialidade(String especialidade) {
+        this.especialidade = especialidade;
+    }
+
+    public ArrayList<LocalDate> getDiasDisponiveis() {
+        return diasDisponiveis;
+    }
+
+    public void setDiasDisponiveis(ArrayList<LocalDate> diasDisponiveis) {
+        this.diasDisponiveis = diasDisponiveis;
+    }
+
+    public ArrayList<LocalTime> getHorariosDisponiveis() {
+        return horariosDisponiveis;
+    }
+
+    public void setHorariosDisponiveis(ArrayList<LocalTime> horariosDisponiveis) {
+        this.horariosDisponiveis = horariosDisponiveis;
+    }
+
+    public int getCrm() {
+        return crm;
+    }
+
+    public void setCrm(int crm) {
+        this.crm = crm;
+    }
+
     @Override
     public String toString() {
         return "Especialista [crm=" + crm + ", especialidade=" + especialidade + ", diasDisponiveis=" + diasDisponiveis
