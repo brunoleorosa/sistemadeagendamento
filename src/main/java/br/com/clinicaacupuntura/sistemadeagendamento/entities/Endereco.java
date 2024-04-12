@@ -5,7 +5,8 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import lombok.Getter;
+import lombok.Setter;
 
 @Entity
 public class Endereco {
@@ -13,29 +14,25 @@ public class Endereco {
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long enderecoId;
 
+    @Getter @Setter
     @Column(length = 120)
     private String rua;
 
+    @Getter @Setter
     @Column
     private int numero;
 
+    @Getter @Setter
     @Column(length = 35)
     private String cidade;
 
+    @Getter @Setter
     @Column(length = 20)
     private String estado;
 
+    @Getter @Setter
     @Column(length = 9)
     private String cep;
-
-    public Endereco(Long enderecoId, String rua, int numero, String cidade, String estado, String cep) {
-        this.enderecoId = enderecoId;
-        this.rua = rua;
-        this.numero = numero;
-        this.cidade = cidade;
-        this.estado = estado;
-        this.cep = cep;
-    }
 
     @Override
     public String toString() {

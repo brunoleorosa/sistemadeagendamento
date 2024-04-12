@@ -1,65 +1,37 @@
 package br.com.clinicaacupuntura.sistemadeagendamento.entities;
 
 import jakarta.persistence.*;
+import lombok.Getter;
+import lombok.Setter;
 
 import java.time.LocalDate;
 import java.time.LocalTime;
 
+@Getter
 @Entity
 public class Consulta {
 
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long consultaId;
 
+    @Setter
     @OneToOne
     private Especialista especialista;
 
+    @Setter
     @OneToOne
     private Paciente paciente;
 
+    @Setter
     @Column
     private LocalDate data;
 
+    @Setter
     @Column
     private LocalTime hora;
-
-    public Long getConsultaId() {
-        return consultaId;
-    }
 
     /*public void setConsultaId(Long consultaId) {
         this.consultaId = consultaId;
     }*/
 
-    public Especialista getEspecialista() {
-        return especialista;
-    }
-
-    public void setEspecialista(Especialista especialista) {
-        this.especialista = especialista;
-    }
-
-    public Paciente getPaciente() {
-        return paciente;
-    }
-
-    public void setPaciente(Paciente paciente) {
-        this.paciente = paciente;
-    }
-
-    public LocalDate getData() {
-        return data;
-    }
-
-    public void setData(LocalDate data) {
-        this.data = data;
-    }
-
-    public LocalTime getHora() {
-        return hora;
-    }
-
-    public void setHora(LocalTime hora) {
-        this.hora = hora;
-    }
 }
