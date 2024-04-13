@@ -1,8 +1,11 @@
 package br.com.clinicaacupuntura.sistemadeagendamento.service;
 
+import br.com.clinicaacupuntura.sistemadeagendamento.entities.Endereco;
 import br.com.clinicaacupuntura.sistemadeagendamento.entities.Especialista;
 import br.com.clinicaacupuntura.sistemadeagendamento.exceptions.EspecialistaNotFoundException;
+import br.com.clinicaacupuntura.sistemadeagendamento.repositories.EnderecoRepository;
 import br.com.clinicaacupuntura.sistemadeagendamento.repositories.EspecialistaRepository;
+import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -15,11 +18,20 @@ public class EspecialistaService {
     @Autowired
     private EspecialistaRepository repo;
 
+    @Autowired
+    private EnderecoRepository enderecoRepo;
+
     public List<Especialista> listAll() {
         return (List<Especialista>) repo.findAll();
     }
 
+    @Transactional
     public void save(Especialista especialista) {
+        Endereco endereco = especialista.getEndereco();
+        if (endereco.getId() == null || !enderecoRepo.existsById(endereco.getId())) {
+            endereco = enderecoRepo.save(endereco);
+        }
+        especialista.setEndereco(endereco);
         repo.save(especialista);
     }
 

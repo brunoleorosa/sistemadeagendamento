@@ -25,11 +25,6 @@ public class Pessoa {
 
     @Getter
     @Setter
-    @OneToOne(cascade = CascadeType.PERSIST, fetch = FetchType.EAGER)
-    private Endereco endereco;
-
-    @Getter
-    @Setter
     @Column(length = 10)
     private String telefone;
 
@@ -49,7 +44,7 @@ public class Pessoa {
 
     @Override
     public String toString() {
-        return "Pessoa [nome=" + nome + ", dataDeNascimento=" + dataDeNascimento + ", endereco=" + endereco
+        return "Pessoa [nome=" + nome + ", dataDeNascimento=" + dataDeNascimento
                 + ", telefone=" + telefone + ", celular=" + celular + ", email=" + email + "]";
     }
 }

@@ -11,8 +11,9 @@ import lombok.Setter;
 @Entity
 public class Endereco {
 
+    @Getter
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long enderecoId;
+    private Long id;
 
     @Getter @Setter
     @Column(length = 120)
@@ -33,10 +34,4 @@ public class Endereco {
     @Getter @Setter
     @Column(length = 9)
     private String cep;
-
-    @Override
-    public String toString() {
-        return "Endereco [rua=" + rua + ", numero=" + numero + ", cidade=" + cidade + ", estado=" + estado + ", cep="
-                + cep + "]";
-    }
 }

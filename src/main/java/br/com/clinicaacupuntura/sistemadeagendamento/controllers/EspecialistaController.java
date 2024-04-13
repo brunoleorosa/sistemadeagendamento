@@ -1,5 +1,6 @@
 package br.com.clinicaacupuntura.sistemadeagendamento.controllers;
 
+import br.com.clinicaacupuntura.sistemadeagendamento.entities.Endereco;
 import br.com.clinicaacupuntura.sistemadeagendamento.entities.Especialista;
 import br.com.clinicaacupuntura.sistemadeagendamento.exceptions.EspecialistaNotFoundException;
 import br.com.clinicaacupuntura.sistemadeagendamento.service.EspecialistaService;
@@ -33,7 +34,22 @@ public class EspecialistaController {
     }
 
     @PostMapping("/especialistas/save")
-    public String salvaEspecialista(Especialista especialista, RedirectAttributes ra) {
+    public String salvaEspecialista(Especialista especialista, RedirectAttributes ra) throws EspecialistaNotFoundException {
+
+        if (especialista.getId() != null) {
+            Especialista existente = service.get(especialista.getId());
+            Endereco enderecoExistente = existente.getEndereco();
+
+            Endereco novoEndereco = especialista.getEndereco();
+            enderecoExistente.setRua(novoEndereco.getRua());
+            enderecoExistente.setNumero(novoEndereco.getNumero());
+            enderecoExistente.setCidade(novoEndereco.getCidade());
+            enderecoExistente.setEstado(novoEndereco.getEstado());
+            enderecoExistente.setCep(novoEndereco.getCep());
+
+            especialista.setEndereco(enderecoExistente);
+        }
+
         service. save(especialista);
         ra.addFlashAttribute("message", "O especialista foi adicionado com sucesso!");
         return "redirect:/especialistas";
