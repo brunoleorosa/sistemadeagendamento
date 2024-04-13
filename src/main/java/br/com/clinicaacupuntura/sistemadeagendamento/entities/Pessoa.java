@@ -26,7 +26,7 @@ public class Pessoa {
     @Getter
     @Setter
     @OneToOne(cascade = CascadeType.PERSIST, fetch = FetchType.EAGER)
-    private Endereco endereco = new Endereco();
+    private Endereco endereco;
 
     @Getter
     @Setter
