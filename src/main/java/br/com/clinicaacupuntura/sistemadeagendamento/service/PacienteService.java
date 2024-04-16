@@ -7,7 +7,6 @@ import br.com.clinicaacupuntura.sistemadeagendamento.repositories.EnderecoReposi
 import br.com.clinicaacupuntura.sistemadeagendamento.repositories.PacienteRepository;
 import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.core.parameters.P;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
