@@ -9,42 +9,31 @@ import lombok.Setter;
 @MappedSuperclass
 public class Pessoa {
 
-    @Getter
-    @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
-
-    @Getter
-    @Setter
+    @Getter @Setter
     @Column(length = 60, nullable = false)
     private String nome;
 
-    @Getter
-    @Setter
+    @Getter @Setter
     @Temporal(TemporalType.DATE)
     private LocalDate dataDeNascimento;
 
-    @Setter
-    @Getter
+    @Setter @Getter
     @OneToOne(cascade = {CascadeType.PERSIST, CascadeType.MERGE}, fetch = FetchType.EAGER)
     private Endereco endereco;
 
-    @Getter
-    @Setter
+    @Getter @Setter
     @Column(length = 10)
     private String telefone;
 
-    @Getter
-    @Setter
+    @Getter @Setter
     @Column(length = 11)
     private String celular;
 
-    @Getter
-    @Setter
+    @Getter @Setter
     @Column(length = 60)
     private String email;
 
     public void setDataDeNascimento(int i, int i2, int i3){
         this.dataDeNascimento = LocalDate.of(i, i2, i3);
     }
-
 }

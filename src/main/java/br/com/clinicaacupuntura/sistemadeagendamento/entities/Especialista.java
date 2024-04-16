@@ -4,15 +4,12 @@ import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
 
-@Setter
-@Getter
-@Entity
-@Table(name = "Especialistas")
+@Setter @Getter
+@Entity @Table(name = "Especialistas")
 public class Especialista extends Pessoa {
 
     @Getter
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     @Column(unique = true)
