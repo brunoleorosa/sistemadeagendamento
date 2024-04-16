@@ -23,6 +23,11 @@ public class Pessoa {
     @Temporal(TemporalType.DATE)
     private LocalDate dataDeNascimento;
 
+    @Setter
+    @Getter
+    @OneToOne(cascade = {CascadeType.PERSIST, CascadeType.MERGE}, fetch = FetchType.EAGER)
+    private Endereco endereco;
+
     @Getter
     @Setter
     @Column(length = 10)
@@ -42,9 +47,4 @@ public class Pessoa {
         this.dataDeNascimento = LocalDate.of(i, i2, i3);
     }
 
-    @Override
-    public String toString() {
-        return "Pessoa [nome=" + nome + ", dataDeNascimento=" + dataDeNascimento
-                + ", telefone=" + telefone + ", celular=" + celular + ", email=" + email + "]";
-    }
 }

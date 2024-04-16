@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="pt-br" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Cadastro de Pacientes</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+</head>
+<body>
+    <div class="container-fluid text-center">
+        <div><h2>Cadastro de Pacientes</h2></div>
+        <div class="m-2" align="left">
+            <a th:href="@{/pacientes/novo}"><button type="button" class="btn btn-success">Novo Paciente</button></a>
+        </div>
+
+        <div th:if="${message}" class="alert alert-success text-center">
+            [[${message}]]
+        </div>
+
+        <div class="mr-2 table-responsive">
+            <table class="table table-striped">
+                <thead class="table-dark">
+                <tr>
+                    <th>ID</th>
+                    <th>Nome</th>
+                    <th>N° de Inscrição</th>
+                    <th>Convênio</th>
+                    <th>Telefone</th>
+                    <th>Celular</th>
+                    <th>E-mail</th>
+                    <th>Prioridade</th>
+                    <th></th>
+                </tr>
+                </thead>
+
+                <tbody>
+                <th:block th:each="paciente : ${pacienteList}">
+                    <tr>
+                        <td>[[${paciente.id}]]</td>
+                        <td>[[${paciente.nome}]]</td>
+                        <td>[[${paciente.numeroDeInscricao}]]</td>
+                        <td>[[${paciente.convenio}]]</td>
+                        <td>[[${paciente.telefone}]]</td>
+                        <td>[[${paciente.celular}]]</td>
+                        <td>[[${paciente.email}]]</td>
+                        <td>[[${paciente.prioridade}]]</td>
+                        <td>
+                            <button type="button" class="btn btn-warning" th:href="@{'/pacientes/edit/' + ${paciente.id}}">Editar</button>
+                            <button type="button" class="btn btn-danger" th:href="@{'/pacientes/delete/' + ${paciente.id}}">Deletar</button>
+                        </td>
+                    </tr>
+                </th:block>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+</body>
+</html>
