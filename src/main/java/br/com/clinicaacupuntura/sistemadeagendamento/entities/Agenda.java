@@ -6,6 +6,7 @@ import lombok.Setter;
 
 import java.time.LocalDate;
 import java.time.LocalTime;
+import java.util.List;
 
 @Setter @Getter
 @Entity
@@ -15,11 +16,11 @@ public class Agenda {
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @OneToOne
-    private Especialista especialista;
-
-    @OneToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     private Paciente paciente;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    private Especialista especialista;
 
     @Column
     private LocalDate data;

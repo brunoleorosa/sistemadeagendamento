@@ -57,7 +57,7 @@ public class AgendaController {
         }
         return "redirect:/agenda";
     }
-    @GetMapping("/agenda/edit{id}")
+    @GetMapping("/agenda/edit/{id}")
     public String editAgenda(Model model, @PathVariable("id") Long id, RedirectAttributes redirectAttributes) {
         try {
             Agenda agenda = agendaService.get(id);
@@ -68,6 +68,17 @@ public class AgendaController {
             redirectAttributes.addFlashAttribute("message", e.getMessage());
             return "redirect:/agenda";
         }
+    }
+
+    @GetMapping("/agenda/delete/{id}")
+    public String delete(@PathVariable("id") Long id, RedirectAttributes redirectAttributes) {
+        try {
+            agendaService.delete(id);
+            redirectAttributes.addFlashAttribute("message", "O agendamento foi deletado com sucesso!");
+        } catch (AgendaNotFoundException e) {
+            redirectAttributes.addFlashAttribute("message", e.getMessage());
+        }
+        return "redirect:/agenda";
     }
 
     @GetMapping("/pacientes/{id}")

@@ -34,4 +34,12 @@ public class AgendaService {
         }
         throw new AgendaNotFoundException("Não foi possível encontrar o agendamento");
     }
+
+    public void delete(Long id) throws AgendaNotFoundException {
+        Long count = agendaRepository.countById(id);
+        if (count == null || count == 0) {
+            throw new AgendaNotFoundException("Não foi possível encontrar agendamento informado.");
+        }
+        agendaRepository.deleteById(id);
+    }
 }
