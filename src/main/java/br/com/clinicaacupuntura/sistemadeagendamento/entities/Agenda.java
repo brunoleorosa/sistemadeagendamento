@@ -11,8 +11,9 @@ import java.time.LocalTime;
 @Entity
 public class Agenda {
 
+    @Getter
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long consultaId;
+    private Long id;
 
     @OneToOne
     private Especialista especialista;

@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="pt-BR" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <title>[[${pageTitle}]]</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+          rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" media="all"
+          href="../../css/thvsjsp.css" th:href="@{/css/thvsjsp.css}"/>
+</head>
+<body>
+    <div class="container">
+        <div class="text-center"><h2>[[${pageTitle}]]</h2></div>
+
+        <form class="row g-3" th:action="@{/agenda/save}" method="post" th:object="${agenda}">
+            <input type="hidden" th:field="*{id}">
+            <div class="col-md-6">
+                <label for="nomeDoPaciente" class="form-label">Paciente</label>
+                <input type="hidden" name="nomeDoPaciente" id="nomeDoPaciente">
+                <select class="form-control" th:field="*{paciente.id}">
+                    <option value="" selected>Selecione um paciente</option>
+                    <option th:each="paciente : ${pacientes}" th:value="${paciente.id}" th:text="${paciente.nome}"></option>
+                </select>
+            </div>
+            <input type="hidden" th:field="*{id}">
+            <div class="col-md-6">
+                <label for="nomeDoEspecialista" class="form-label">Especialista</label>
+                <input type="hidden" name="nomeDoPaciente" id="nomeDoEspecialista">
+                <select class="form-control" th:field="*{especialista.id}">
+                    <option value="" selected>Selecione um especialista</option>
+                    <option th:each="especialista : ${especialistas}" th:value="${especialista.id}" th:text="${especialista.nome}"></option>
+                </select>
+            </div>
+            <div class="col-md-4">
+                <label for="data" class="form-label">Data</label>
+                <input type="date" th:field="*{data}" class="form-control" id="data">
+            </div>
+            <div class="col-md-4">
+                <label for="hora" class="form-label">Hora</label>
+                <input type="time" th:field="*{hora}" class="form-control" id="hora">
+            </div>
+            <div class="col-md-4">
+                <label for="numeroDeSessoes" class="form-label">Nº de Sessões</label>
+                <input type="number" th:field="*{numeroDeSessoes}" class="form-control" id="numeroDeSessoes">
+            </div>
+            <div class="col-md-12">
+                <label for="observacoes" class="form-label">Observações</label>
+                <input type="text" th:field="*{observacoes}" class="form-control" id="observacoes">
+
+            </div>
+            <div class="text-center">
+                <button type="submit" class="btn btn-primary m-2">Salvar</button>
+                <button type="button" class="btn btn-secondary m-2" onclick="cancelForm()">Cancelar</button>
+            </div>
+        </form>
+    </div>
+    <script type="text/javascript">
+        function cancelForm(){
+            window.location = "[[@{/agenda}]]";
+        }
+    </script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+</body>
+</html>
