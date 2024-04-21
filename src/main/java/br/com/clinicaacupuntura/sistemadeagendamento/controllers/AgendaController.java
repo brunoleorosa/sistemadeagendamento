@@ -61,6 +61,10 @@ public class AgendaController {
     public String editAgenda(Model model, @PathVariable("id") Long id, RedirectAttributes redirectAttributes) {
         try {
             Agenda agenda = agendaService.get(id);
+            List<Paciente> pacientes = pacienteService.listAll();
+            List<Especialista> especialistas = especialistaService.listAll();
+            model.addAttribute("pacientes", pacientes);
+            model.addAttribute("especialistas", especialistas);
             model.addAttribute("agenda", agenda);
             model.addAttribute("pageTitle", "Edite o Agendamento (ID: " + id + ")");
             return "agenda_form";
