@@ -3,8 +3,6 @@ package br.com.clinicaacupuntura.sistemadeagendamento.service;
 import br.com.clinicaacupuntura.sistemadeagendamento.entities.Agenda;
 import br.com.clinicaacupuntura.sistemadeagendamento.exceptions.AgendaNotFoundException;
 import br.com.clinicaacupuntura.sistemadeagendamento.repositories.AgendaRepository;
-import br.com.clinicaacupuntura.sistemadeagendamento.repositories.EspecialistaRepository;
-import br.com.clinicaacupuntura.sistemadeagendamento.repositories.PacienteRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -15,10 +13,6 @@ import java.util.Optional;
 public class AgendaService {
 
     @Autowired private AgendaRepository agendaRepository;
-
-    @Autowired private PacienteRepository pacienteRepository;
-
-    @Autowired private EspecialistaRepository especialistaRepository;
 
     public List<Agenda> listAll() { return (List<Agenda>) agendaRepository.findAll();
     }
