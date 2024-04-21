@@ -23,6 +23,6 @@ public class Paciente extends Pessoa {
     @Column
     private String convenio;
 
-    @OneToMany(mappedBy = "paciente", cascade = CascadeType.ALL, orphanRemoval = true)
+    @OneToMany(mappedBy = "paciente", cascade = CascadeType.ALL)
     private List<Agenda> agendas;
 }
