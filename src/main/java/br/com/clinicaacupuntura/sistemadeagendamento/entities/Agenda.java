@@ -7,31 +7,29 @@ import lombok.Setter;
 import java.time.LocalDate;
 import java.time.LocalTime;
 
-@Getter
+@Setter @Getter
 @Entity
-public class Consulta {
+public class Agenda {
 
+    @Getter
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long consultaId;
+    private Long id;
 
-    @Setter
-    @OneToOne
-    private Especialista especialista;
-
-    @Setter
-    @OneToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     private Paciente paciente;
 
-    @Setter
+    @ManyToOne(fetch = FetchType.LAZY)
+    private Especialista especialista;
+
     @Column
     private LocalDate data;
 
-    @Setter
     @Column
     private LocalTime hora;
 
-    /*public void setConsultaId(Long consultaId) {
-        this.consultaId = consultaId;
-    }*/
+    @Column
+    private Integer numeroDeSessoes;
 
+    @Column
+    private String observacoes;
 }

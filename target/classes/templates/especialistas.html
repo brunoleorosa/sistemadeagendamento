@@ -10,6 +10,7 @@
     <div><h2>Cadastro de Especialistas</h2></div>
     <div class="m-2">
         <a th:href="@{/especialistas/novo}"><button type="button" class="btn btn-success">Novo Especialista</button></a>
+        <a th:href="@{/}"><button type="button" class="btn btn-secondary">Voltar</button></a>
     </div>
 
     <div th:if="${message}" class="alert alert-success text-center">
@@ -42,7 +43,7 @@
                     <td>[[${especialista.email}]]</td>
                     <td>
                         <a th:href="@{'/especialistas/edit/' + ${especialista.id}}"><button type="button" class="btn btn-warning">Editar</button></a>
-                            <a th:href="@{'/especialistas/delete/' + ${especialista.id}}"><button type="button" class="btn btn-danger">Deletar</button></a>
+                        <a th:href="@{'/especialistas/delete/' + ${especialista.id}}"><button type="button" class="btn btn-danger btnDel">Deletar</button></a>
                     </td>
                 </tr>
             </th:block>
@@ -51,5 +52,6 @@
     </div>
 </div>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+<script type="text/javascript" th:src="@{/js/javascript.js}"></script>
 </body>
 </html>

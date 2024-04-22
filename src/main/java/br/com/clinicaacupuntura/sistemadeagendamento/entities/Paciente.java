@@ -4,6 +4,8 @@ import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
 
+import java.util.List;
+
 @Setter @Getter
 @Entity @Table(name = "Pacientes")
 public class Paciente extends Pessoa {
@@ -20,4 +22,7 @@ public class Paciente extends Pessoa {
 
     @Column
     private String convenio;
+
+    @OneToMany(mappedBy = "paciente", cascade = CascadeType.ALL)
+    private List<Agenda> agendas;
 }
