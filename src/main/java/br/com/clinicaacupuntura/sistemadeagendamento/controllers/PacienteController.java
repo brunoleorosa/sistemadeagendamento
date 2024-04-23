@@ -35,6 +35,14 @@ public class PacienteController {
         return "paciente_form";
     }
 
+    @GetMapping("/pacientes/view/{id}")
+    public String pacienteView(Model model, @PathVariable("id") Long id) throws PacienteNotFoundException {
+        Paciente paciente = service.get(id);
+        model.addAttribute("paciente", paciente);
+        model.addAttribute("pageTitle", "Visualização"); 
+        return "paciente_view";
+    }
+
     @PostMapping("/pacientes/save")
     public String save(Paciente paciente, RedirectAttributes redirectAttributes) throws PacienteNotFoundException {
 
