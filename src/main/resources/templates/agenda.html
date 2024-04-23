@@ -47,6 +47,7 @@
                         <td>[[${agenda.especialista.nome}]]</td>
                         <td>[[${agenda.observacoes}]]</td>
                         <td>
+                            <a th:href="@{'/agenda/view/' + ${agenda.id}}"><button type="button" class="btn btn-primary">Visualizar</button></a>
                             <a th:href="@{'/agenda/edit/' + ${agenda.id}}"><button type="button" class="btn btn-warning">Editar</button></a>
                             <a th:href="@{'/agenda/delete/' + ${agenda.id}}"><button type="button" class="btn btn-danger btnDel">Deletar</button></a>
                         </td>

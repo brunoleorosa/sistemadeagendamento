@@ -44,6 +44,14 @@ public class AgendaController {
         return "agenda_form";
     }
 
+    @GetMapping("agenda/view/{id}")
+    public String agendaView(Model model, @PathVariable("id") Long id) throws AgendaNotFoundException {
+        Agenda agenda = agendaService.get(id);
+        model.addAttribute("agenda", agenda);     
+        model.addAttribute("pageTitle", "Visualização"); 
+        return "agenda_view";
+    }
+
     @PostMapping("/agenda/save")
     public String save(Agenda agenda, RedirectAttributes redirectAttributes) throws AgendaNotFoundException {
         try {
