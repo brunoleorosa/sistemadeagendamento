@@ -42,6 +42,7 @@
                     <td>[[${especialista.celular}]]</td>
                     <td>[[${especialista.email}]]</td>
                     <td>
+                        <a th:href="@{'/especialistas/view/' + ${especialista.id}}"><button type="button" class="btn btn-primary">Visualizar</button></a>
                         <a th:href="@{'/especialistas/edit/' + ${especialista.id}}"><button type="button" class="btn btn-warning">Editar</button></a>
                         <a th:href="@{'/especialistas/delete/' + ${especialista.id}}"><button type="button" class="btn btn-danger btnDel">Deletar</button></a>
                     </td>

@@ -61,6 +61,14 @@ public class EspecialistaController {
         return "especialista_form";
     }
 
+    @GetMapping("/especialistas/view/{id}")
+    public String especialistaView(Model model, @PathVariable("id") Long id) throws EspecialistaNotFoundException {
+        Especialista especialista = service.get(id);
+        model.addAttribute("especialista", especialista);
+        model.addAttribute("pageTitle", "Visualização"); 
+        return "especialista_view";
+    }
+
     @GetMapping("/especialistas/edit/{id}")
     public String showEditForm(@PathVariable("id") Long id, Model model, RedirectAttributes ra) {
         try {
