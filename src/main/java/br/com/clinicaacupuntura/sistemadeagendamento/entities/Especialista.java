@@ -1,35 +1,25 @@
 package br.com.clinicaacupuntura.sistemadeagendamento.entities;
 
-import java.time.LocalDate;
-import java.time.LocalTime;
-import java.util.ArrayList;
-
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
 
-@Setter
-@Getter
-@Entity
-@Table(name = "Especialistas")
+import java.util.List;
+
+@Setter @Getter
+@Entity @Table(name = "Especialistas")
 public class Especialista extends Pessoa {
 
     @Getter
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column
+    @Column(unique = true)
     private int crm;
 
     @Column (length = 60)
     private String especialidade;
 
-    @Setter
-    @Getter
-    @OneToOne(cascade = {CascadeType.PERSIST, CascadeType.MERGE}, fetch = FetchType.EAGER)
-    private Endereco endereco;
-
-    private ArrayList<LocalDate> diasDisponiveis= new ArrayList<>();
-    private ArrayList<LocalTime> horariosDisponiveis = new ArrayList<>();
+    @OneToMany(mappedBy = "especialista", cascade = CascadeType.ALL)
+    private List<Agenda> agendas;
 }

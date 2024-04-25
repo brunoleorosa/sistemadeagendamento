@@ -1,16 +1,20 @@
 package br.com.clinicaacupuntura.sistemadeagendamento.entities;
 
-import java.time.LocalDate;
+import jakarta.persistence.*;
+import lombok.Getter;
+import lombok.Setter;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Table;
+import java.util.List;
 
-@Entity
-@Table(name = "Pacientes")
+@Setter @Getter
+@Entity @Table(name = "Pacientes")
 public class Paciente extends Pessoa {
 
-    @Column(name = "Número de Inscrição")
+    @Getter
+    @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+
+    @Column(unique = true)
     private int numeroDeInscricao;
 
     @Column
@@ -19,13 +23,6 @@ public class Paciente extends Pessoa {
     @Column
     private String convenio;
 
-    public void temPrioridade(){
-        //TODO
-    }
-
-    @Override
-    public String toString() {
-        return "Paciente [numeroDeInscricao=" + numeroDeInscricao + ", prioridade=" + prioridade + ", convenio="
-                + convenio + "]";
-    }
+    @OneToMany(mappedBy = "paciente", cascade = CascadeType.ALL)
+    private List<Agenda> agendas;
 }
