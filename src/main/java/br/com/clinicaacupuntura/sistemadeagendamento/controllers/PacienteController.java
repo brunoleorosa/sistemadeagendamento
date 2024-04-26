@@ -6,6 +6,7 @@ import br.com.clinicaacupuntura.sistemadeagendamento.exceptions.PacienteNotFound
 import br.com.clinicaacupuntura.sistemadeagendamento.service.PacienteService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataIntegrityViolationException;
+import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -21,9 +22,11 @@ public class PacienteController {
     @Autowired private PacienteService service;
 
     @GetMapping("/pacientes")
-    public String novoPacientes(Model model) {
-        List<Paciente> pacienteList = service.listAll();
+    public String novoPacientes(Model model, @Param("keyword") String keyword) {
+
+        List<Paciente> pacienteList = service.listAll(keyword);
         model.addAttribute("pacienteList", pacienteList);
+        model.addAttribute("keyword", keyword);
         return "pacientes";
     }
 

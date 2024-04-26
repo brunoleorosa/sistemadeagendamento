@@ -22,6 +22,13 @@ public class PacienteService {
     private EnderecoRepository enderecoRepository;
 
     public List<Paciente> listAll() {
+
+        return (List<Paciente>) pacienteRepository.findAll();
+    }
+
+    public List<Paciente> listAll(String keyword) {
+
+        if (keyword != null) return (List<Paciente>) pacienteRepository.findAll(keyword);
         return (List<Paciente>) pacienteRepository.findAll();
     }
 
