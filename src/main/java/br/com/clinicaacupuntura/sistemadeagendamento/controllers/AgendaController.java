@@ -58,7 +58,7 @@ public class AgendaController {
     public String save(Agenda agenda, RedirectAttributes redirectAttributes) throws AgendaNotFoundException {
         try {
             agendaService.save(agenda);
-            redirectAttributes.addFlashAttribute("success", "Agenda salva com sucesso!");
+            redirectAttributes.addFlashAttribute("message", "Agenda salva com sucesso!");
         } catch (DataAccessException e) {
             System.out.println("Erro ao acessar os dados: " + e.getMessage());
             throw new AgendaNotFoundException("Erro ao salvar a agenda");
