@@ -14,7 +14,14 @@ public class AgendaService {
 
     @Autowired private AgendaRepository agendaRepository;
 
-    public List<Agenda> listAll() { return (List<Agenda>) agendaRepository.findAll();
+    public List<Agenda> listAll() {
+        return (List<Agenda>) agendaRepository.findAll();
+    }
+
+    public List<Agenda> listAll(String keyword) {
+
+        if (keyword != null) return (List<Agenda>) agendaRepository.findAll(keyword);
+        return (List<Agenda>) agendaRepository.findAll();
     }
 
     public void save(Agenda agenda) {
