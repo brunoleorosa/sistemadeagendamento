@@ -7,8 +7,18 @@
           integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
 </head>
 <body>
+
+    <nav class="navbar bg-body-tertiary">
+        <div class="container-fluid">
+          <a class="navbar-brand">Agendamento de Consultas</a>
+          <form class="d-flex" role="search">
+            <input class="form-control me-2" type="search" placeholder="Pesquisar" aria-label="Search">
+            <button class="btn btn-outline-success" type="submit">Pesquisar</button>
+          </form>
+        </div>
+    </nav>
+
     <div class="container-fluid text-center">
-        <div><h2>Agendamento de Consultas</h2></div>
         <div class="m-2">
             <a th:href="@{/agenda/novo}"><button type="button" class="btn btn-success">Agendar</button></a>
             <a th:href="@{/}"><button type="button" class="btn btn-secondary">Voltar</button></a>
