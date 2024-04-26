@@ -2,6 +2,7 @@ package br.com.clinicaacupuntura.sistemadeagendamento.service;
 
 import br.com.clinicaacupuntura.sistemadeagendamento.entities.Endereco;
 import br.com.clinicaacupuntura.sistemadeagendamento.entities.Especialista;
+import br.com.clinicaacupuntura.sistemadeagendamento.entities.Paciente;
 import br.com.clinicaacupuntura.sistemadeagendamento.exceptions.EspecialistaNotFoundException;
 import br.com.clinicaacupuntura.sistemadeagendamento.repositories.EnderecoRepository;
 import br.com.clinicaacupuntura.sistemadeagendamento.repositories.EspecialistaRepository;
@@ -22,6 +23,13 @@ public class EspecialistaService {
     private EnderecoRepository enderecoRepo;
 
     public List<Especialista> listAll() {
+
+        return (List<Especialista>) repo.findAll();
+    }
+
+    public List<Especialista> listAll(String keyword) {
+
+        if (keyword != null) return (List<Especialista>) repo.findAll(keyword);
         return (List<Especialista>) repo.findAll();
     }
 
