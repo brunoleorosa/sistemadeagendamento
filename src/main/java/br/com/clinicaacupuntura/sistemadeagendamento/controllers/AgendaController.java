@@ -10,6 +10,7 @@ import br.com.clinicaacupuntura.sistemadeagendamento.service.EspecialistaService
 import br.com.clinicaacupuntura.sistemadeagendamento.service.PacienteService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataAccessException;
+import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -27,9 +28,10 @@ public class AgendaController {
     @Autowired private EspecialistaService especialistaService;
 
     @GetMapping("/agenda")
-    public String consultas(Model model) {
-        List<Agenda> agendaList = agendaService.listAll();
+    public String consultas(Model model, @Param("keyword") String keyword) {
+        List<Agenda> agendaList = agendaService.listAll(keyword);
         model.addAttribute("agendaList", agendaList);
+        model.addAttribute("keyword", keyword);
         return "agenda";
     }
 

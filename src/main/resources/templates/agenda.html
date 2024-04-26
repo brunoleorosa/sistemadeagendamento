@@ -11,10 +11,12 @@
     <nav class="navbar bg-body-tertiary">
         <div class="container-fluid">
           <a class="navbar-brand">Agendamento de Consultas</a>
-          <form class="d-flex" role="search">
-            <input class="form-control me-2" type="search" placeholder="Pesquisar" aria-label="Search">
-            <button class="btn btn-outline-success" type="submit">Pesquisar</button>
+          <form th:action="@{/agenda}" class="d-flex" role="search">
+            <input class="form-control me-2" type="search" name="keyword" th:value="${keyword}" placeholder="Pesquisar" aria-label="Search">
+            <div class="me-2"><button class="btn btn-outline-success" type="submit">Pesquisar</button></div>
+            <div class="me-2"><button type="button" class="btn btn-outline-secondary" value="Clear" onclick="clearFilter()">Limpar</button></div>
           </form>
+
         </div>
     </nav>
 
@@ -66,8 +68,13 @@
                 </tbody>
             </table>
         </div>
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
-        <script type="text/javascript" th:src="@{/js/javascript.js}"></script>
     </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+    <script type="text/javascript" th:src="@{/js/javascript.js}"></script>
+    <script type="text/javascript">
+        function clearFilter() {
+            window.location = '/agenda'
+        }
+    </script>
 </body>
 </html>
