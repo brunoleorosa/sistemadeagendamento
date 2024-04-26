@@ -6,6 +6,7 @@ import br.com.clinicaacupuntura.sistemadeagendamento.exceptions.EspecialistaNotF
 import br.com.clinicaacupuntura.sistemadeagendamento.service.EspecialistaService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataIntegrityViolationException;
+import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -48,9 +49,11 @@ public class EspecialistaController {
     }
 
     @GetMapping("/especialistas")
-    public String novoEspecialista(Model model){
-        List<Especialista> listEspecialistas = service.listAll();
+    public String novoEspecialista(Model model, @Param("keyword") String keyword){
+
+        List<Especialista> listEspecialistas = service.listAll(keyword);
         model.addAttribute("listEspecialistas", listEspecialistas);
+        model.addAttribute("keyword", keyword);
         return"especialistas";
     }
 
