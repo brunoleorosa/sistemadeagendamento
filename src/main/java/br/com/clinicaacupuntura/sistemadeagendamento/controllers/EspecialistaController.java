@@ -39,7 +39,7 @@ public class EspecialistaController {
                 especialista.setEndereco(enderecoExistente);
             }
 
-            service. save(especialista);
+            service.save(especialista);
             ra.addFlashAttribute("message", "O especialista foi adicionado com sucesso!");
             return "redirect:/especialistas";
         } catch (DataIntegrityViolationException e) {
