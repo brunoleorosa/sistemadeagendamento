@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/.idea/sistemadeagendamento.iml" filepath="$PROJECT_DIR$/.idea/sistemadeagendamento.iml" />
+      <module fileurl="file://$PROJECT_DIR$/sistemadeagendamento.iml" filepath="$PROJECT_DIR$/sistemadeagendamento.iml" />
     </modules>
   </component>
 </project>
