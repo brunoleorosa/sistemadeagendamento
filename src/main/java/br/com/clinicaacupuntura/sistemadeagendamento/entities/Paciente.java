@@ -15,7 +15,7 @@ public class Paciente extends Pessoa {
     private Long id;
 
     @Column(unique = true)
-    private int numeroDeInscricao;
+    private Long numeroDeInscricao;
 
     @Column
     private boolean prioridade;

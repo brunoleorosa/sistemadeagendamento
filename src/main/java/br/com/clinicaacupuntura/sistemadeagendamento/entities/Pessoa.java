@@ -22,11 +22,11 @@ public class Pessoa {
     private Endereco endereco;
 
     @Getter @Setter
-    @Column(length = 10)
+    @Column
     private String telefone;
 
     @Getter @Setter
-    @Column(length = 11)
+    @Column
     private String celular;
 
     @Getter @Setter
