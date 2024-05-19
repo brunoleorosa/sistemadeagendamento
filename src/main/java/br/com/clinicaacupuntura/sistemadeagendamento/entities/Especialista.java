@@ -15,7 +15,7 @@ public class Especialista extends Pessoa {
     private Long id;
 
     @Column(unique = true)
-    private int crm;
+    private Long crm;
 
     @Column (length = 60)
     private String especialidade;

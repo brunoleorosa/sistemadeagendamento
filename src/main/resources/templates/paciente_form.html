@@ -65,12 +65,12 @@
 
             <div class="col-md-4">
                 <label for="telefone" class="form-label">Telefone</label>
-                <input type="text" th:field="*{telefone}" class="form-control" id="telefone" />
+                <input type="text" th:field="*{telefone}" class="form-control" id="telefone" placeholder="(XX) XXXX-XXXX" />
             </div>
 
             <div class="col-md-4">
                 <label for="celular" class="form-label">Celular</label>
-                <input type="text" th:field="*{celular}" class="form-control" id="celular" />
+                <input type="text" th:field="*{celular}" class="form-control" id="celular" placeholder="(XX) XXXXX-XXXX" />
             </div>
 
             <div class="col-md-4">
@@ -95,6 +95,18 @@
         function cancelForm(){
             window.location = "[[@{/pacientes}]]";
         }
+    </script>
+    <script type="text/javascript">
+        document.querySelector('#telefone').addEventListener('input', function (e) {
+        var x = e.target.value.replace(/\D/g, '').match(/(\d{0,2})(\d{0,4})(\d{0,4})/);
+        e.target.value = !x[2] ? x[1] : '(' + x[1] + ') ' + x[2] + (x[3] ? '-' + x[3] : '');
+    });
+    </script>
+    <script type="text/javascript">
+        document.querySelector('#celular').addEventListener('input', function (e) {
+        var x = e.target.value.replace(/\D/g, '').match(/(\d{0,2})(\d{0,5})(\d{0,4})/);
+        e.target.value = !x[2] ? x[1] : '(' + x[1] + ') ' + x[2] + (x[3] ? '-' + x[3] : '');
+    });
     </script>
 </body>
 </html>
